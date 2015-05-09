@@ -57,8 +57,9 @@ public class PlayerController : MonoBehaviour {
 
 		//Fix the camer to being mostly behind the boat
 		//FIXME this causes a weird snap when the player rotates through the disconuity
-		float minus=PlayerGameObject.transform.eulerAngles.y-15;
-		float plus=PlayerGameObject.transform.eulerAngles.y+15;
+		float snapangle = 90;
+		float minus=PlayerGameObject.transform.eulerAngles.y-snapangle;
+		float plus=PlayerGameObject.transform.eulerAngles.y+snapangle;
 		rotationX = Mathf.Clamp(rotationX,minus,plus);
 
 		Vector3 rotatedOffset = Quaternion.Euler(0, rotationX, 0) * cameraOffset;
