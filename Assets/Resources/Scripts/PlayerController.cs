@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 		ShipControls.turn = Input.GetAxis ("Horizontal");
 
 		if(Input.GetMouseButtonDown(0)){
-			ShipControls.fire = Input.GetAxis("Fire1");
+			ShipControls.FireTurrets();
 		}
 
 		//GetCameraTarget ();
@@ -53,7 +53,6 @@ public class PlayerController : MonoBehaviour {
 
 		rotationX += Input.GetAxis("Mouse X") * cameraSensitivity * Time.deltaTime;
 		rotationY -= Input.GetAxis("Mouse Y") * cameraSensitivity * Time.deltaTime;
-		rotationY = Mathf.Clamp (rotationY, -90, 90);
 
 		//Fix the camer to being mostly behind the boat
 		//FIXME this causes a weird snap when the player rotates through the disconuity
@@ -99,25 +98,7 @@ public class PlayerController : MonoBehaviour {
 			mousetarget=hit.point;
 			mousetarget.y=1.001f;
 		}
-		//old & super broken
-		//mousetarget = Input.mousePosition;
-		//mousetarget.z =PlayerGameObject.transform.position.z-Camera.main.transform.position.z;
-		//mousetarget = Camera.main.ScreenToWorldPoint(mousetarget);
-		//mousetarget.y=1.01f;
-
 	}
-	/*
-	void GetCameraTarget () {
 
-		float h;
-		if (Camera.main.transform.forward.y < 0) {
-			h = Camera.main.transform.position.y / Camera.main.transform.forward.y;
-			target = Camera.main.transform.position + -1 * h * Camera.main.transform.forward;
-		} else {
-			target = new Vector3 (0, 0, 0);
-		}
-
-
-	}*/
 
 }

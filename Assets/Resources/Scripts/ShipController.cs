@@ -20,6 +20,12 @@ public class ShipController : MonoBehaviour {
 
 	private List<TurretController> Turrets = new List<TurretController>();
 
+	public void FireTurrets(){
+		for (int i = 0; i < Turrets.Count; i++) {
+			Turrets[i].Fire();
+		}
+	}
+
 	public void BuildShip(){
 		//TODO
 	}
@@ -56,13 +62,6 @@ public class ShipController : MonoBehaviour {
 		Move ();
 		Rotate ();
 		UpdateTurrets ();
-		FireTurrets(fire);
-		fire=0;
-
-		//FireTurrets();
-
-		//Debug.DrawRay (transform.position, transform.forward * 5);
-
 
 	}
 
@@ -85,16 +84,7 @@ public class ShipController : MonoBehaviour {
 			Turrets[i].Target = mousetarget;
 		}
 	}
-	void FireTurrets(float fire){
 
-		if(fire !=0){
-			for (int i = 0; i < Turrets.Count; i++) {
-				Turrets[i].Fire();
-			}
-		}
-
-
-	}
 
 	
 }

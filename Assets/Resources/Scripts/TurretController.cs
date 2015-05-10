@@ -1,90 +1,151 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TurretController : MonoBehaviour {
 
 	public Vector3 Target;
 
-	public float ShellSpeed=0; // changing shell speed seemed to have no effect I have no idea how it'
-							   // its behaviour is controlled so I just replaced it with a new float
+	float ShellSpeed = 10; 
 
-	public float fixedShellSpeed; // now the behaviour has moved to here I am at a total loss and at the end for tonight
+	float RotationSpeed = 1.0f;
 
-	public float RotationSpeed;
+	public float ReloadSpeed = 0.5f;
 
 	private float MaxRange;
 
-	private float MinRange=0;
+	private float MinRange = 0;
 
+	private float NextFire = 0;
 
+	private List<BarrelController> BarrelControllers = new List<BarrelController>();
+	
 	public void Fire(){
-
-		GameObject Bullet;
-
-		Bullet = Instantiate (Resources.Load ("Prefab/Bullet") as GameObject);
-
-		Bullet.transform.position = transform.position + transform.forward*1.7f;
-		
-		Rigidbody BulletRB;
-
-		BulletRB = Bullet.GetComponent<Rigidbody> ();
-
-		BulletRB.velocity = fixedShellSpeed*transform.forward;
-
-		Debug.Log(360 - transform.eulerAngles.x);
-
+		if (CanFire ()) {
+			for (int i = 0; i < BarrelControllers.Count; i++) {
+				BarrelControllers[i].Fire();
+			}
+		}
 	}
+
+	public void AddBarrel (string path, Vector3 pos){
+		//Adds an object found at 'path' at the position 'pos' relative to the ship
+		
+		GameObject newBarrel;
+		
+		BarrelController newBarrelController;
+		
+		newBarrel = Instantiate (Resources.Load (path) as GameObject);
+		newBarrelController = (BarrelController) newBarrel.GetComponent(typeof(BarrelController));
+
+		newBarrel.transform.parent = transform;
+		newBarrel.transform.position = transform.position + pos;
+
+		BarrelControllers.Add(newBarrelController);
+	}
+
 	void Awake () {
+
 		// I am not sure if I trust this math here at all I think it is BullShit
-		//MaxRange = Mathf.Cos ( Mathf.Deg2Rad * 45 ) * fixedShellSpeed; // 1/sqrt(2)??? vs all that trig?
-		fixedShellSpeed = 15;
-		MaxRange = -1f*fixedShellSpeed*fixedShellSpeed/Physics.gravity.y;
-		Debug.Log(fixedShellSpeed);
+		//MaxRange = Mathf.Cos ( Mathf.Deg2Rad * 45 ) * ShellSpeed; // 1/sqrt(2)??? vs all that trig?
+
+		ShellSpeed = 15;
+		MaxRange = -1f*ShellSpeed*ShellSpeed/Physics.gravity.y;
 	}
 	// Use this for initialization
-	void Start () {	
+	void Start () {
+		AddBarrel("Prefab/Barrel",new Vector3 (0, 0, 0));
+		//AddBarrel("Prefab/Barrel",new Vector3 (0.3f, 0, 0));
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		RotateTowardsTarget ();
 
-		//if (Input.GetMouseButtonDown(0)) {
-		//	Fire ();
-		//}
-
-	
-	}
-
-	void RotateTowardsTarget () {//TODO make this point towards the mouse cursor instead of what ever it is doing now;
-								 //TODO I REALLY FUCKED THIS UP
-		Vector3 RelativePos = Target - gameObject.transform.position;
-
-		float distance;
-
-		if (RelativePos.magnitude < MaxRange && RelativePos.magnitude > MinRange) {
-			distance = RelativePos.magnitude;
-		} 
-
-		else if(RelativePos.magnitude > MinRange ) {
-			distance = MaxRange;
-		}
-
-		else{
-
-			distance=MinRange;
-
-		}
-
-		transform.eulerAngles = new Vector3(0, Quaternion.LookRotation(RelativePos).eulerAngles.y,0);
-
-		float arcUp = Mathf.PI/2 - 1.0f/2.0f*(Mathf.Asin ((-1*Physics.gravity.y * distance) / (fixedShellSpeed * fixedShellSpeed)));
-
-
-		transform.Rotate(new Vector3(Mathf.Rad2Deg *-1*arcUp ,0,0));
+		SetBarrelAngle (AngleToTarget ());
 
 	}
 
+	void SetBarrelAngle(float angle){
+		for (int i = 0; i < BarrelControllers.Count; i++) {
+			BarrelControllers[i].Theta = angle;
+		}
+	}
+
+	bool CanFire () {
+		if (Time.time < NextFire) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+
+	void RotateTowardsTarget () {
+
+		float a = AngleToRotate ();
+		Debug.DrawRay (transform.position, transform.forward * 5);
+		Debug.DrawRay (transform.position, transform.up * 5);
+
+		Vector3 b = Quaternion.Euler (0, a, 0) * transform.forward;
+
+		Debug.DrawRay (transform.position, b * 5);
+
+
+
+		if (Mathf.Abs (a) > RotationSpeed) {
+
+			transform.Rotate (new Vector3 (0, RotationSpeed * Mathf.Sign (a), 0));
+
+		} else {
+
+			transform.Rotate (new Vector3 (0, a, 0));
+		}
+
+	}
+
+
+	float AngleToRotate(){
+		// Sets up the two vectors
+		Vector3 v1 = transform.forward;
+		Vector3 v2 = Target - transform.position;
+		// Flattens the vectors
+		v1.y = 0;
+		v2.y = 0;
+		// Normalizes the vectors
+		Vector3.Normalize (v1);
+		Vector3.Normalize (v2);
+		// Returns the angle between the vectors
+		return Vector3.Angle (v1,v2) * Mathf.Sign(v2.x * v1.z - v2.z * v1.x);
+	}
+
+	float AngleToTarget() {
+		// Sets up the two vectors
+
+		Vector3 v1 = Target - transform.position;
+		float y = v1.y;
+		//flattens the vector
+		v1.y = 0;
+		float x = v1.magnitude;
+		float g = Physics.gravity.y *-1.0f;
+		float v = ShellSpeed;
+
+		float sqrtInner = (v * v * v * v) - g * (g * x * x + 2 * y * v * v);
+
+		if (sqrtInner < 0) {
+			return -45.0f;
+		}
+
+		float sqrtOuter = Mathf.Sqrt (sqrtInner);
+
+		float arctInner = -1.0f * ((v * v) - sqrtOuter) ;
+
+		//print (-1.0f * Mathf.Rad2Deg * Mathf.Atan2 (arctInner,g*x));
+
+		return Mathf.Rad2Deg * Mathf.Atan2 (arctInner,g*x);
+
+	}
 
 
 }
