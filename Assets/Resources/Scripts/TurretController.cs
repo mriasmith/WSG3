@@ -14,11 +14,9 @@ public class TurretController : MonoBehaviour {
 
 	private float MaxRange;
 
-	private float MinRange = 0;
-
 	private float NextFire = 0;
 
-	private List<BarrelController> BarrelControllers = new List<BarrelController>();
+	public List<BarrelController> BarrelControllers = new List<BarrelController>();
 	
 	public void Fire(){
 		if (CanFire ()) {
@@ -26,22 +24,6 @@ public class TurretController : MonoBehaviour {
 				BarrelControllers[i].Fire();
 			}
 		}
-	}
-
-	public void AddBarrel (string path, Vector3 pos){
-		//Adds an object found at 'path' at the position 'pos' relative to the ship
-		
-		GameObject newBarrel;
-		
-		BarrelController newBarrelController;
-		
-		newBarrel = Instantiate (Resources.Load (path) as GameObject);
-		newBarrelController = (BarrelController) newBarrel.GetComponent(typeof(BarrelController));
-
-		newBarrel.transform.parent = transform;
-		newBarrel.transform.position = transform.position + pos;
-
-		BarrelControllers.Add(newBarrelController);
 	}
 
 	void Awake () {
@@ -54,7 +36,7 @@ public class TurretController : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		AddBarrel("Prefab/Barrel",new Vector3 (0, 0, 0));
+		//AddBarrel("Prefab/Barrel",new Vector3 (0, 0, 0));
 		//AddBarrel("Prefab/Barrel",new Vector3 (0.3f, 0, 0));
 	}
 	

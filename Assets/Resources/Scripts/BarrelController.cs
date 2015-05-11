@@ -13,12 +13,16 @@ public class BarrelController : MonoBehaviour {
 
 	public float Theta = -45;
 
+	private float recoilDisplacement;
+
+	private GameObject Cylinder;
+
 	public void Fire (){
 
 		GameObject newBullet;
 		Rigidbody newBulletRB;
 		
-		newBullet = Instantiate (Resources.Load ("Prefab/Bullet") as GameObject);
+		newBullet = Instantiate (Resources.Load ("Prefabs/Bullet") as GameObject);
 		newBulletRB = newBullet.GetComponent<Rigidbody> ();
 		
 		newBullet.transform.position = transform.position + transform.forward * 2.0f;
@@ -31,12 +35,7 @@ public class BarrelController : MonoBehaviour {
 		float angle = transform.localEulerAngles.x;
 		angle = (angle > 180) ? angle - 360 : angle;
 
-		print (angle);
-		print (Theta);
-		print (angle < Theta);
-
 		if (angle < Theta) {
-			print ("1");
 			if (RotationSpeed > Theta - angle) {
 				transform.Rotate(new Vector3(Theta - angle,0,0));
 			} else {
@@ -44,7 +43,6 @@ public class BarrelController : MonoBehaviour {
 			}
 		}
 		if (angle > Theta) {
-			print ("2");
 			if (RotationSpeed > angle - Theta) {
 				transform.Rotate(new Vector3(angle - Theta,0,0));
 			} else {
@@ -56,8 +54,7 @@ public class BarrelController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
-		transform.Rotate(new Vector3(-1,0,0));
+		Cylinder = transform.FindChild ("Cylinder").gameObject;
 	}
 	
 	// Update is called once per frame

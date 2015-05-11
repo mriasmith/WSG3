@@ -50,9 +50,13 @@
      <Compile Include="Assets\Resources\Scripts\BarrelController.cs" />
      <Compile Include="Assets\Resources\Scripts\BulletController.cs" />
      <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
+     <Compile Include="Assets\Resources\Scripts\ShipBuilder.cs" />
      <Compile Include="Assets\Resources\Scripts\ShipController.cs" />
      <Compile Include="Assets\Resources\Scripts\TargetingCursorController.cs" />
+     <Compile Include="Assets\Resources\Scripts\TurretBuilder.cs" />
      <Compile Include="Assets\Resources\Scripts\TurretController.cs" />
+     <None Include="Assets\Resources\Turrets\Ship1.xml" />
+     <None Include="Assets\Resources\Turrets\Turret1.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

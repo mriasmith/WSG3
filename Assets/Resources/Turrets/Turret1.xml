@@ -1,0 +1,36 @@
+<turret>
+	<buildings>
+		<building>
+			<path>Prefabs/Building</path>
+			<position name="x">0</position>
+			<position name="y">0</position>
+			<position name="z">-0.5</position>
+		</building>
+	</buildings>
+	<barrels>
+		<barrel>
+			<path>Prefabs/Barrel</path>
+			<position name="x">-0.1</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Barrel</path>
+			<position name="x">0.1</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Barrel</path>
+			<position name="x">0.2</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Barrel</path>
+			<position name="x">-0.2</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</barrel>
+	</barrels>
+</turret>

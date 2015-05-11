@@ -12,46 +12,20 @@ public class ShipController : MonoBehaviour {
 
 	public float fire;
 
-	//public Vector3 target;
-
 	public Vector3 mousetarget;
 
 	private Rigidbody shipBR;
 
-	private List<TurretController> Turrets = new List<TurretController>();
+	public List<TurretController>TurretControllers = new List<TurretController>();
 
 	public void FireTurrets(){
-		for (int i = 0; i < Turrets.Count; i++) {
-			Turrets[i].Fire();
+		for (int i = 0; i < TurretControllers.Count; i++) {
+			TurretControllers[i].Fire();
 		}
-	}
-
-	public void BuildShip(){
-		//TODO
-	}
-
-	public void AddSubObject (string path, Vector3 pos){
-		//Adds an object found at 'path' at the position 'pos' relative to the ship
-
-		GameObject ObjectToAdd;
-
-		TurretController ballTC;
-
-		ObjectToAdd = Instantiate (Resources.Load (path) as GameObject);
-
-		ObjectToAdd.transform.parent = transform;
-
-		ObjectToAdd.transform.position = transform.position + pos;
-
-		ballTC = (TurretController) ObjectToAdd.GetComponent(typeof(TurretController));
-
-		Turrets.Add(ballTC);
 	}
 
 	// Use this for initialization
 	void Start () {
-
-
 		shipBR = GetComponent<Rigidbody> ();
 	
 	}
@@ -77,11 +51,11 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void UpdateTurrets(){
-		//Updates the target for all turrets
+		//Updates the target for allTurretControllers
 
-		for (int i = 0; i < Turrets.Count; i++) // Loop with for.
+		for (int i = 0; i <TurretControllers.Count; i++) // Loop with for.
 		{
-			Turrets[i].Target = mousetarget;
+			TurretControllers[i].Target = mousetarget;
 		}
 	}
 
