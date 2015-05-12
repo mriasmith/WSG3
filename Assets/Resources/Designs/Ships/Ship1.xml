@@ -1,4 +1,7 @@
 <ship>
+	<stats>
+	
+	</stats>
 	<buildings>
 		<building>
 			<path>Prefabs/Components/Hulls/LargeHull</path>

@@ -10,6 +10,7 @@ public class TurretController : MonoBehaviour {
 	public float ReloadSpeed = 3.0f;
 	public float maxAngle = 100.0f;
 	public float minAngle = -100.0f;
+	public float recoil = 0.5f;
 	private float NextFire = 0;
 	private float totalRotation = 0;
 	private bool targetIsNotInArc = true;
@@ -54,8 +55,9 @@ public class TurretController : MonoBehaviour {
 
 	void SetShellSpeed(){
 		for (int i = 0; i < BarrelControllers.Count; i++) {
-			print (ShellSpeed);
 			BarrelControllers[i].ShellSpeed = ShellSpeed;
+			BarrelControllers[i].reload = ReloadSpeed;
+			BarrelControllers[i].recoil = recoil;
 		}
 	}
 
@@ -108,7 +110,7 @@ public class TurretController : MonoBehaviour {
 
 	float AngleToTarget() {
 		// Sets up the two vectors
-		Vector3 v1 = Target - transform.position + new Vector3(0,10,0);
+		Vector3 v1 = Target - transform.position ;
 		float y = v1.y;
 		//flattens the vector
 		v1.y = 0;

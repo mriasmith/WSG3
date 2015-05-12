@@ -35,6 +35,7 @@ public class TurretBuilder : MonoBehaviour {
 
 		newBarrel = Instantiate (Resources.Load ("Prefabs/Defaults/Barrel") as GameObject);
 		newBarrelController = (BarrelController) newBarrel.GetComponent(typeof(BarrelController));
+		newBarrelController.offset = offset;
 		newBarrelBuilder = (BarrelBuilder) newBarrel.GetComponent(typeof(BarrelBuilder));
 
 		newBarrelBuilder.Build (path,offset);
@@ -56,6 +57,8 @@ public class TurretBuilder : MonoBehaviour {
 				case "reload": theTC.ReloadSpeed = float.Parse(stat.InnerText); break;
 				case "mVel": theTC.ShellSpeed = float.Parse(stat.InnerText); break;
 				case "rVel": theTC.RotationSpeed = float.Parse(stat.InnerText); break;
+				case "name": this.gameObject.name = stat.InnerText; break;
+				case "recoil": theTC.recoil = float.Parse(stat.InnerText); break;
 			}
 		}
 

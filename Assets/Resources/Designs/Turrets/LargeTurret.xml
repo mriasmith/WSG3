@@ -5,19 +5,24 @@
 			<position name="x">0</position>
 			<position name="y">0</position>
 			<position name="z">-0.5</position>
+			<stat name="reload">4</stat>
+			<stat name="mVel">100</stat>
+			<stat name="rVel">0.5</stat>
+			<stat name="name">LargeTurret</stat>
+			<stat name="recoil">0.5</stat>
 		</building>
 	</buildings>
 	<barrels>
 		<barrel>
 			<path>Prefabs/Components/Turrets/Barrels/LargeBarrel</path>
-			<offset>0.5</offset>
+			<offset>0.7</offset>
 			<position name="x">-0.3</position>
 			<position name="y">0.2</position>
 			<position name="z">0</position>
 		</barrel>
 		<barrel>
 			<path>Prefabs/Components/Turrets/Barrels/LargeBarrel</path>
-			<offset>0.5</offset>
+			<offset>0.7</offset>
 			<position name="x">0.3</position>
 			<position name="y">0.2</position>
 			<position name="z">0</position>

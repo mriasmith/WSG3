@@ -1,27 +1,46 @@
 <turret>
+	<stats>
+		<stat name="name">SmallTurret</stat>
+		<stat name="reload">0.5</stat>
+		<stat name="mVel">100</stat>
+		<stat name="rVel">1</stat>
+		<stat name="acuracy">0.9</stat>
+		<stat name="recoil">2</stat>
+	</stats>
 	<buildings>
 		<building>
 			<path>Prefabs/Components/Turrets/TurretBuildings/smallTurretBuilding</path>
 			<position name="x">0</position>
 			<position name="y">0</position>
 			<position name="z">0</position>
-			<stat name="reload">0.1</stat>
-			<stat name="mVel">100</stat>
-			<stat name="rVel">1</stat>
 		</building>
 	</buildings>
 	<barrels>
 		<barrel>
 			<path>Prefabs/Components/Turrets/Barrels/SmallBarrel</path>
 			<offset>0.25</offset>
-			<position name="x">-0.3</position>
+			<position name="x">-0.1</position>
+			<position name="y">0.1</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Components/Turrets/Barrels/SmallBarrel</path>
+			<offset>0.25</offset>
+			<position name="x">0.1</position>
+			<position name="y">0.1</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Components/Turrets/Barrels/SmallBarrel</path>
+			<offset>0.25</offset>
+			<position name="x">-0.1</position>
 			<position name="y">0.2</position>
 			<position name="z">0</position>
 		</barrel>
 		<barrel>
 			<path>Prefabs/Components/Turrets/Barrels/SmallBarrel</path>
 			<offset>0.25</offset>
-			<position name="x">0.3</position>
+			<position name="x">0.1</position>
 			<position name="y">0.2</position>
 			<position name="z">0</position>
 		</barrel>
