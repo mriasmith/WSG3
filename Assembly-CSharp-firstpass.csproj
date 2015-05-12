@@ -47,8 +47,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Plugins\SimpleJSON.cs" />
-     <None Include="Assets\Resources\Turrets\Ship1.xml" />
-     <None Include="Assets\Resources\Turrets\Turret1.xml" />
+     <None Include="Assets\Resources\Designs\Turrets\SmallTurret.xml" />
+     <None Include="Assets\Resources\Designs\Ships\Ship1.xml" />
+     <None Include="Assets\Resources\Designs\Turrets\LargeTurret.xml" />
+     <None Include="Assets\Resources\Designs\Ships\SmallShip.xml" />
+     <None Include="Assets\Resources\Designs\Turrets\Turret1.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

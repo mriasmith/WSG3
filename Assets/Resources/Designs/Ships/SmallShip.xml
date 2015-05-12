@@ -1,0 +1,18 @@
+<ship>
+	<buildings>
+		<building>
+			<path>Prefabs/Components/Hulls/SmallHull</path>
+			<position name="x">0</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</building>
+	</buildings>
+	<turrets>
+		<turret>
+			<path>Designs/Turrets/SmallTurret</path>
+			<position name="x">0</position>
+			<position name="y">1</position>
+			<position name="z">1</position>
+		</turret>
+	</turrets>
+</ship>

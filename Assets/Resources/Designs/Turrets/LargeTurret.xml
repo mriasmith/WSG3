@@ -1,0 +1,26 @@
+<turret>
+	<buildings>
+		<building>
+			<path>Prefabs/Components/Turrets/TurretBuildings/LargeTurretBuilding</path>
+			<position name="x">0</position>
+			<position name="y">0</position>
+			<position name="z">-0.5</position>
+		</building>
+	</buildings>
+	<barrels>
+		<barrel>
+			<path>Prefabs/Components/Turrets/Barrels/LargeBarrel</path>
+			<offset>0.5</offset>
+			<position name="x">-0.3</position>
+			<position name="y">0.2</position>
+			<position name="z">0</position>
+		</barrel>
+		<barrel>
+			<path>Prefabs/Components/Turrets/Barrels/LargeBarrel</path>
+			<offset>0.5</offset>
+			<position name="x">0.3</position>
+			<position name="y">0.2</position>
+			<position name="z">0</position>
+		</barrel>
+	</barrels>
+</turret>

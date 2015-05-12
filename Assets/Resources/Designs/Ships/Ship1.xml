@@ -1,0 +1,63 @@
+<ship>
+	<buildings>
+		<building>
+			<path>Prefabs/Components/Hulls/LargeHull</path>
+			<position name="x">0</position>
+			<position name="y">0</position>
+			<position name="z">0</position>
+		</building>
+		<building>
+			<path>Prefabs/Components/Buildings/ShipBuilding</path>
+			<position name="x">0</position>
+			<position name="y">1</position>
+			<position name="z">0</position>
+		</building>
+	</buildings>
+	<turrets>
+		<turret>
+			<path>Designs/Turrets/LargeTurret</path>
+			<position name="x">0</position>
+			<position name="y">1</position>
+			<position name="z">4</position>
+			<rotation>0</rotation>
+			<rotPlusLimit>135</rotPlusLimit>
+			<rotMinusLimit>-135</rotMinusLimit>
+			
+		</turret>
+		<turret>
+			<path>Designs/Turrets/LargeTurret</path>
+			<position name="x">0</position>
+			<position name="y">1</position>
+			<position name="z">-4</position>
+			<rotation>180</rotation>
+		</turret>
+		<turret>
+			<path>Designs/Turrets/SmallTurret</path>
+			<position name="x">-0.75</position>
+			<position name="y">1</position>
+			<position name="z">-1</position>
+			<rotation>-90</rotation>
+		</turret>
+		<turret>
+			<path>Designs/Turrets/SmallTurret</path>
+			<position name="x">-0.75</position>
+			<position name="y">1</position>
+			<position name="z">1</position>
+			<rotation>-90</rotation>
+		</turret>
+		<turret>
+			<path>Designs/Turrets/SmallTurret</path>
+			<position name="x">0.75</position>
+			<position name="y">1</position>
+			<position name="z">1</position>
+			<rotation>90</rotation>
+		</turret>
+		<turret>
+			<path>Designs/Turrets/SmallTurret</path>
+			<position name="x">0.75</position>
+			<position name="y">1</position>
+			<position name="z">-1</position>
+			<rotation>090</rotation>
+		</turret>
+	</turrets>
+</ship>

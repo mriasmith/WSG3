@@ -46,17 +46,21 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Resources\Scripts\AIController.cs" />
-     <Compile Include="Assets\Resources\Scripts\BarrelController.cs" />
-     <Compile Include="Assets\Resources\Scripts\BulletController.cs" />
-     <Compile Include="Assets\Resources\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Resources\Scripts\ShipBuilder.cs" />
-     <Compile Include="Assets\Resources\Scripts\ShipController.cs" />
-     <Compile Include="Assets\Resources\Scripts\TargetingCursorController.cs" />
-     <Compile Include="Assets\Resources\Scripts\TurretBuilder.cs" />
-     <Compile Include="Assets\Resources\Scripts\TurretController.cs" />
-     <None Include="Assets\Resources\Turrets\Ship1.xml" />
-     <None Include="Assets\Resources\Turrets\Turret1.xml" />
+     <Compile Include="Assets\Resources\Scripts\Builders\BarrelBuilder.cs" />
+     <Compile Include="Assets\Resources\Scripts\Builders\ShipBuilder.cs" />
+     <Compile Include="Assets\Resources\Scripts\Builders\TurretBuilder.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\AIController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\BarrelController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\BulletController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\ShipController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\TargetingCursorController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\TurretController.cs" />
+     <None Include="Assets\Resources\Designs\Turrets\SmallTurret.xml" />
+     <None Include="Assets\Resources\Designs\Ships\Ship1.xml" />
+     <None Include="Assets\Resources\Designs\Turrets\LargeTurret.xml" />
+     <None Include="Assets\Resources\Designs\Ships\SmallShip.xml" />
+     <None Include="Assets\Resources\Designs\Turrets\Turret1.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
