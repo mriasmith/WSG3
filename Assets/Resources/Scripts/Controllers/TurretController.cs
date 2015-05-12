@@ -5,14 +5,12 @@ using System.Collections.Generic;
 public class TurretController : MonoBehaviour {
 
 	public Vector3 Target;
-	float ShellSpeed = 10; 
-	float RotationSpeed = 1.0f;
-	public float ReloadSpeed = 0.5f;
+	public float ShellSpeed = 100; 
+	public float RotationSpeed = 1.0f;
+	public float ReloadSpeed = 3.0f;
 	public float maxAngle = 100.0f;
 	public float minAngle = -100.0f;
-	private float MaxRange;
 	private float NextFire = 0;
-	private Vector3 ZeroPos;
 	private float totalRotation = 0;
 	private bool targetIsNotInArc = true;
 	public List<BarrelController> BarrelControllers = new List<BarrelController>();
@@ -22,16 +20,15 @@ public class TurretController : MonoBehaviour {
 			for (int i = 0; i < BarrelControllers.Count; i++) {
 				BarrelControllers[i].Fire();
 			}
+			NextFire = Time.time + ReloadSpeed;
 		}
 	}
 
 	void Awake () {
-		ShellSpeed = 15;
-		MaxRange = -1f*ShellSpeed*ShellSpeed/Physics.gravity.y;
 	}
 	
 	void Start () {
-
+		SetShellSpeed ();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +49,13 @@ public class TurretController : MonoBehaviour {
 	void SetBarrelAngle(float angle){
 		for (int i = 0; i < BarrelControllers.Count; i++) {
 			BarrelControllers[i].Theta = angle;
+		}
+	}
+
+	void SetShellSpeed(){
+		for (int i = 0; i < BarrelControllers.Count; i++) {
+			print (ShellSpeed);
+			BarrelControllers[i].ShellSpeed = ShellSpeed;
 		}
 	}
 
@@ -104,7 +108,7 @@ public class TurretController : MonoBehaviour {
 
 	float AngleToTarget() {
 		// Sets up the two vectors
-		Vector3 v1 = Target - transform.position;
+		Vector3 v1 = Target - transform.position + new Vector3(0,10,0);
 		float y = v1.y;
 		//flattens the vector
 		v1.y = 0;

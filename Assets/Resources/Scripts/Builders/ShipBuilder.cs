@@ -24,7 +24,7 @@ public class ShipBuilder : MonoBehaviour {
 		newBuilding.transform.position = transform.position + pos;
 	}
 	
-	void AddTurret (string path, Vector3 pos, float rotation){
+	void AddTurret (string path, Vector3 pos, float rot, float maxRot, float minRot){
 		//Adds an object found at 'path' at the position 'pos' relative to the ship
 		
 		GameObject newTurret;
@@ -33,13 +33,17 @@ public class ShipBuilder : MonoBehaviour {
 		
 		newTurret = Instantiate (Resources.Load ("Prefabs/Defaults/Turret") as GameObject);
 		newTurretController = (TurretController) newTurret.GetComponent(typeof(TurretController));
+
+		newTurretController.maxAngle = maxRot;
+		newTurretController.minAngle = minRot;
+
 		newTurretBuilder = (TurretBuilder)newTurret.GetComponent (typeof(TurretBuilder));
 		
 		newTurret.transform.parent = transform;
 		newTurret.transform.position = transform.position + pos;
 		newTurretBuilder.Build (path);
 
-		newTurret.transform.Rotate (new Vector3 (0, rotation, 0));
+		newTurret.transform.Rotate (new Vector3 (0, rot, 0));
 
 		
 		ShipC.TurretControllers.Add(newTurretController);
@@ -80,6 +84,8 @@ public class ShipBuilder : MonoBehaviour {
 			float yPos = 0.0f;
 			float zPos = 0.0f;
 			float rot = 0.0f;
+			float maxRot = 100;
+			float minRot = 100;
 			string path = null;
 			foreach (XmlNode turretItens in turret.ChildNodes) {
 				if(turretItens.Name == "position"){
@@ -94,11 +100,16 @@ public class ShipBuilder : MonoBehaviour {
 				}
 
 				if(turretItens.Name == "rotation"){
-					print ("BLORT");
 					rot = float.Parse(turretItens.InnerText);
 				}
+				if(turretItens.Name == "minRot"){
+					minRot = float.Parse(turretItens.InnerText);
+				}
+				if(turretItens.Name == "maxRot"){
+					maxRot = float.Parse(turretItens.InnerText);
+				}
 			}
-			AddTurret(path,new Vector3(xPos,yPos,zPos),rot);
+			AddTurret(path,new Vector3(xPos,yPos,zPos),rot,maxRot,minRot);
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BarrelController : MonoBehaviour {
 
-	float ShellSpeed = 12.0f;
+	public float ShellSpeed = 12.0f;
 
 	public GameObject ShellObject = null;
 
@@ -27,7 +27,7 @@ public class BarrelController : MonoBehaviour {
 		newBullet = Instantiate (Resources.Load ("Prefabs/Components/Turrets/Projectiles/Bullet") as GameObject);
 		newBulletRB = newBullet.GetComponent<Rigidbody> ();
 		
-		newBullet.transform.position = transform.position + transform.forward * 2.0f;
+		newBullet.transform.position = transform.position + transform.forward;
 		newBulletRB.velocity = ShellSpeed * transform.forward;
 
 	}

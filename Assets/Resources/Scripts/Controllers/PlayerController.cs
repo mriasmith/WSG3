@@ -55,7 +55,7 @@ public class PlayerController : MonoBehaviour {
 
 	void SetUpControllable () {
 		PlayerGameObject = Instantiate (Resources.Load ("Prefabs/Defaults/Ship") as GameObject);
-
+		PlayerGameObject.name = "Player Ship";
 		ShipControls = (ShipController) PlayerGameObject.GetComponent(typeof(ShipController));
 		playerShipBuilder = (ShipBuilder) PlayerGameObject.GetComponent(typeof(ShipBuilder));
 

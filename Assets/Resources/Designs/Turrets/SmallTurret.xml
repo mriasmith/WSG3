@@ -5,6 +5,9 @@
 			<position name="x">0</position>
 			<position name="y">0</position>
 			<position name="z">0</position>
+			<stat name="reload">0.1</stat>
+			<stat name="mVel">100</stat>
+			<stat name="rVel">1</stat>
 		</building>
 	</buildings>
 	<barrels>

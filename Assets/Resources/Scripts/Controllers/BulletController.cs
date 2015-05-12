@@ -8,6 +8,13 @@ public class BulletController : MonoBehaviour {
 
 
 	}
+
+	void OnCollisionEnter(Collision collision) {
+		foreach (ContactPoint contact in collision.contacts) {
+			Debug.DrawRay (contact.point, contact.normal*20, Color.white);
+		}
+		print ("SQUWEEEEEE");
+	}
 	
 	// Update is called once per frame
 	void Update () {

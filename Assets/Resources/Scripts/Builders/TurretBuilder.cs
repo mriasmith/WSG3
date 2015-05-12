@@ -50,6 +50,15 @@ public class TurretBuilder : MonoBehaviour {
 		XmlDocument xmlDoc = new XmlDocument(); // xmlDoc is the new xml document.
 		xmlDoc.LoadXml(TurretXML.text); // load the file.
 
+		XmlNodeList statList = xmlDoc.GetElementsByTagName("stat");
+		foreach (XmlNode stat in statList) {
+				switch(stat.Attributes["name"].Value){
+				case "reload": theTC.ReloadSpeed = float.Parse(stat.InnerText); break;
+				case "mVel": theTC.ShellSpeed = float.Parse(stat.InnerText); break;
+				case "rVel": theTC.RotationSpeed = float.Parse(stat.InnerText); break;
+			}
+		}
+
 		XmlNodeList buildingList = xmlDoc.GetElementsByTagName("building");
 		//Builds the buildings
 		foreach (XmlNode building in buildingList) {

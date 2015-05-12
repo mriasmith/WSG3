@@ -20,9 +20,9 @@
 			<position name="y">1</position>
 			<position name="z">4</position>
 			<rotation>0</rotation>
-			<rotPlusLimit>135</rotPlusLimit>
-			<rotMinusLimit>-135</rotMinusLimit>
-			
+			<maxRot>135</maxRot>
+			<minRot>-135</minRot>
+	
 		</turret>
 		<turret>
 			<path>Designs/Turrets/LargeTurret</path>
@@ -30,6 +30,8 @@
 			<position name="y">1</position>
 			<position name="z">-4</position>
 			<rotation>180</rotation>
+			<maxRot>135</maxRot>
+			<minRot>-135</minRot>
 		</turret>
 		<turret>
 			<path>Designs/Turrets/SmallTurret</path>
@@ -37,6 +39,8 @@
 			<position name="y">1</position>
 			<position name="z">-1</position>
 			<rotation>-90</rotation>
+			<maxRot>20</maxRot>
+			<minRot>-100</minRot>
 		</turret>
 		<turret>
 			<path>Designs/Turrets/SmallTurret</path>
@@ -44,6 +48,8 @@
 			<position name="y">1</position>
 			<position name="z">1</position>
 			<rotation>-90</rotation>
+			<maxRot>100</maxRot>
+			<minRot>-20</minRot>
 		</turret>
 		<turret>
 			<path>Designs/Turrets/SmallTurret</path>
@@ -51,6 +57,8 @@
 			<position name="y">1</position>
 			<position name="z">1</position>
 			<rotation>90</rotation>
+			<maxRot>20</maxRot>
+			<minRot>-100</minRot>
 		</turret>
 		<turret>
 			<path>Designs/Turrets/SmallTurret</path>
@@ -58,6 +66,8 @@
 			<position name="y">1</position>
 			<position name="z">-1</position>
 			<rotation>090</rotation>
+			<maxRot>100</maxRot>
+			<minRot>-20</minRot>
 		</turret>
 	</turrets>
 </ship>
