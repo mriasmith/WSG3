@@ -53,6 +53,7 @@
      <Compile Include="Assets\Resources\Scripts\Controllers\BarrelController.cs" />
      <Compile Include="Assets\Resources\Scripts\Controllers\BulletController.cs" />
      <Compile Include="Assets\Resources\Scripts\Controllers\PlayerController.cs" />
+     <Compile Include="Assets\Resources\Scripts\Controllers\PlayerEditorController.cs" />
      <Compile Include="Assets\Resources\Scripts\Controllers\ShipController.cs" />
      <Compile Include="Assets\Resources\Scripts\Controllers\TargetingCursorController.cs" />
      <Compile Include="Assets\Resources\Scripts\Controllers\TurretController.cs" />
